@@ -1364,3 +1364,85 @@ footer {
         max-height: 50px;
     }
 }
+
+
+/* =========================================
+   BOOKS MOCKUP SECTION DESIGN
+   ========================================= */
+
+.books-mockup-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Books ko neeche se align karega */
+    gap: 0; /* Overlapping ke liye gap 0 */
+    margin: 60px auto 0;
+    max-width: 900px;
+    padding: 0 20px;
+}
+
+.book-mockup {
+    position: relative;
+    width: 220px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 1;
+    margin-left: -40px; /* Books ko ek doosre par charhane ke liye */
+    filter: drop-shadow(0 15px 25px rgba(11, 31, 75, 0.15));
+}
+
+.book-mockup:first-child {
+    margin-left: 0;
+    z-index: 4; /* Pehli book sabse upar */
+}
+
+.book-mockup:nth-child(2) { z-index: 3; }
+.book-mockup:nth-child(3) { z-index: 2; }
+.book-mockup:nth-child(4) { z-index: 1; }
+
+/* Book Image Styling */
+.book-mockup img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px 12px 12px 4px; /* Book jaisa shape (left side spine) */
+    border-left: 6px solid rgba(0, 0, 0, 0.15); /* Spine shadow */
+    transition: transform 0.4s ease;
+    background: #fff;
+}
+
+/* Hover Effect - Book lift hogi aur aage aayegi */
+.book-mockup:hover {
+    transform: translateY(-25px) rotate(-2deg) scale(1.05);
+    z-index: 10;
+}
+
+.book-mockup:hover img {
+    box-shadow: -10px 20px 30px rgba(11, 31, 75, 0.25);
+}
+
+/* =========================================
+   RESPONSIVE (Mobile & Tablet)
+   ========================================= */
+@media (max-width: 860px) {
+    .books-mockup-container {
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+    .book-mockup {
+        margin-left: 0;
+        width: 180px;
+    }
+    .book-mockup:hover {
+        transform: translateY(-10px) scale(1.03);
+    }
+}
+
+@media (max-width: 480px) {
+    .book-mockup {
+        width: 45%; /* Mobile par 2 books ek row mein */
+        margin-left: 0;
+    }
+    .books-mockup-container {
+        gap: 15px;
+    }
+}
