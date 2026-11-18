@@ -1004,10 +1004,17 @@ footer {
 
 /* Amazon Button */
 .rp-btn {
-    display: inline-block;
-    background: #0b1f4b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    height: auto;
+    width: 220px;
+    gap: 10px;
+
+    background: #ffffff;
     /* Dark blue from your theme */
-    color: #ffffff;
+    color: #0b1f4b;
     font-weight: 600;
     font-size: 1rem;
     padding: 14px 32px;
@@ -1015,13 +1022,21 @@ footer {
     text-decoration: none;
     transition: background 0.3s ease, transform 0.2s ease;
     box-shadow: 0 4px 12px rgba(11, 31, 75, 0.2);
+    
 }
 
 .rp-btn:hover {
-    background: var(--amber, #d97706);
-    /* Changes to amber on hover */
+    /* background: #f8a932; */
+    /* Amber from your theme */
+    /* color: #ffffff; */
     transform: translateY(-2px);
 }
+
+.rp-btn img{
+    height: 20px;
+    /* margin-right: 10px; */
+}
+
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
@@ -1202,7 +1217,7 @@ footer {
     margin-bottom: 30px;
 }
 
-.rp-btn {
+/* .rp-btn {
     display: inline-block;
     background: #0b1f4b;
     color: #ffffff;
@@ -1213,12 +1228,9 @@ footer {
     text-decoration: none;
     transition: background 0.3s ease, transform 0.2s ease;
     box-shadow: 0 4px 12px rgba(11, 31, 75, 0.2);
-}
+} */
 
-.rp-btn:hover {
-    background: var(--amber, #d97706);
-    transform: translateY(-2px);
-}
+
 
 /* --- Bottom Part: 9 Platform Boxes --- */
 
