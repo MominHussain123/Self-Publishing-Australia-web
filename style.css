@@ -1,5 +1,5 @@
 :root {
-    --bg: #ffffff;
+    --bg: #EBEDEA;
     --bg2: #f3f6fc;
     --card: #ffffff;
     --line: rgba(11, 31, 75, .14);
@@ -580,7 +580,7 @@ footer {
 
 .heroimg {
     max-width: 840px;
-    margin: 0 auto ;
+    margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -670,16 +670,17 @@ footer {
         justify-content: center;
         text-align: center
     }
+
     .heroimg video {
-    position: relative;
-    display: block;
-    width: 100%;
-    /* height: 396px; */
-    /* width: 100%; */
-    height: 200px;
-    /* height: auto; */
-    /* filter: drop-shadow(0 18px 30px rgba(11, 31, 75, .22)) */
-}
+        position: relative;
+        display: block;
+        width: 100%;
+        /* height: 396px; */
+        /* width: 100%; */
+        height: 200px;
+        /* height: auto; */
+        /* filter: drop-shadow(0 18px 30px rgba(11, 31, 75, .22)) */
+    }
 }
 
 .gh {
@@ -1283,7 +1284,7 @@ footer {
 }
 
 /* Top Amber Accent Line */
-.platform-box::before {
+/* .platform-box::before {
     content: '';
     position: absolute;
     top: 0;
@@ -1294,7 +1295,7 @@ footer {
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.4s ease;
-}
+} */
 
 /* Hover Effect - Glow & Lift */
 .platform-box:hover {
@@ -1334,25 +1335,29 @@ footer {
     filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
 }
 
-/* =========================================
-   
-        @media (max-width: 860px) {
-            .platforms-grid {
-                grid-template-columns: repeat(2, 1fr);
-                /* Tablet: 2 columns */
-gap: 20px;
-}
+
+@media (max-width: 860px) {
+    .platforms-grid {
+        /* grid-template-columns: repeat(2, 1fr); */
+        /* Tablet: 2 columns */
+        gap: 20px;
+    }
+
+    .platform-box {
+        height: 120px;
+    }
 }
 
 @media (max-width: 480px) {
     .platforms-grid {
-        grid-template-columns: 1fr;
+        /* grid-template-columns: 1fr; */
         /* Mobile: 1 column */
         gap: 16px;
     }
 
     .platform-box {
-        height: 120px;
+        height: 60px;
+        border-radius: 14px;
     }
 
     .platform-box img {
