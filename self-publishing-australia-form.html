@@ -233,7 +233,7 @@
 
     <section class="box" id="formBox">
       <h2>Tell us about your book</h2>
-      <form id="f" action="#" method="post" enctype="multipart/form-data">
+      <form id="f" action="send.php" method="post" enctype="multipart/form-data">
         <label for="name">Full name</label>
         <input id="name" name="name" autocomplete="name" placeholder="Enter your full name" required>
         <div class="row">
@@ -300,11 +300,37 @@
     </section>
   </main>
   <script>
-    // Replace the action URL (or this handler) with your form service, e.g. Formspree or your CRM.
     document.getElementById('f').addEventListener('submit', function (e) {
       e.preventDefault();
-      this.style.display = 'none';
-      document.getElementById('ok').style.display = 'block';
+      var form = this;
+      var btn = form.querySelector('button[type="submit"]');
+      var originalText = btn.textContent;
+
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+
+      fetch('send.php', {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'X-Requested-With': 'XMLHttpRequest' }
+      })
+        .then(function (res) { return res.json(); })
+        .then(function (json) {
+          if (json.success) {
+            form.style.display = 'none';
+            document.getElementById('ok').style.display = 'block';
+            document.getElementById('ok').scrollIntoView({ behavior: 'smooth', block: 'center' });
+          } else {
+            alert(json.message || 'Something went wrong. Please try again.');
+            btn.disabled = false;
+            btn.textContent = originalText;
+          }
+        })
+        .catch(function () {
+          alert('Network error. Please email us directly at authors@selfpublishingaustralia.com');
+          btn.disabled = false;
+          btn.textContent = originalText;
+        });
     });
   </script>
 </body>
