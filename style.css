@@ -1346,17 +1346,17 @@ footer {
 } */
 
 /* Hover Effect - Glow & Lift */
-.platform-box:hover {
+/* .platform-box:hover {
     transform: translateY(-8px);
     box-shadow: 0 20px 40px rgba(248, 169, 50, 0.15), 0 10px 20px rgba(11, 31, 75, 0.05);
     border-color: rgba(248, 169, 50, 0.3);
     background: linear-gradient(145deg, #ffffff, #fffdf8);
-}
+} */
 
 /* Hover par top line poori ho jayegi */
-.platform-box:hover::before {
+/* .platform-box:hover::before {
     transform: scaleX(1);
-}
+} */
 
 /* Image / Logo Styling */
 .platform-box img {
@@ -1378,10 +1378,10 @@ footer {
 }
 
 /* Hover par logo thora upar aur bada hoga */
-.platform-box:hover img {
+/* .platform-box:hover img {
     transform: scale(1.1) translateY(-3px);
     filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
-}
+} */
 
 
 @media (max-width: 860px) {
