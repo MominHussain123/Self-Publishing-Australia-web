@@ -349,6 +349,18 @@ nav .btn {
     border-block: 1px solid var(--line)
 }
 
+.alt .two {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* gap: 20px; */
+    flex-wrap: wrap;
+}
+
+.alt .two .content {
+    max-width: 650px;
+}
+
 .steps {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -561,7 +573,11 @@ footer {
     border-radius: 26px;
     /* padding: 28px 38px 0; */
     /* background: linear-gradient(180deg, #fff6e6, #fff); */
-    overflow: hidden
+    overflow: hidden;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+
 }
 
 .pfig {
@@ -2060,4 +2076,166 @@ svg {
     overflow: visible;
     font-size: 0;
     line-height: 0;
+}
+
+
+
+
+/* ============================================================
+       STICKY "CALL NOW" STYLE BUTTON  (fixed on screen while scroll)
+       ============================================================ */
+.sticky-cta {
+    position: fixed;
+    bottom: calc(1.4rem + env(safe-area-inset-bottom, 0px));
+    right: calc(1.4rem + env(safe-area-inset-right, 0px));
+    z-index: 9999;
+
+    /* ---- Call-Now pill look ---- */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+
+    padding: 0.9rem 1.6rem 0.9rem 1.1rem;
+    border-radius: 60px;
+
+    /* bold amber CTA using theme */
+    background: linear-gradient(180deg, var(--amber) 0%, var(--amber-d) 100%);
+    color: #ffffff;
+    border: 2px solid var(--amber-t);
+
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    white-space: nowrap;
+
+    /* shadow + lift */
+    box-shadow:
+        0 10px 24px -8px rgba(184, 111, 0, .55),
+        0 4px 10px -2px rgba(11, 31, 75, .18);
+
+    transition: transform .18s cubic-bezier(.2, .9, .3, 1.2),
+        box-shadow .18s,
+        filter .18s;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+}
+
+/* pulse ring behind (like a call-now beacon) */
+.sticky-cta::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: var(--amber);
+    opacity: .55;
+    z-index: -1;
+    animation: ctaPulse 2.4s ease-out infinite;
+    pointer-events: none;
+}
+
+@keyframes ctaPulse {
+    0% {
+        transform: scale(1);
+        opacity: .55;
+    }
+
+    70% {
+        transform: scale(1.18);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1.18);
+        opacity: 0;
+    }
+}
+
+/* phone / pen icon bubble */
+/* .sticky-cta .cta-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: #ffffff;
+    color: var(--amber-t);
+    font-size: 1.05rem;
+    font-weight: 800;
+    flex: 0 0 auto;
+    box-shadow: inset 0 -2px 0 rgba(0, 0, 0, .06);
+} */
+
+
+.sticky-cta .cta-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: #ffffff;
+    color: var(--amber-t);
+    /* amber color for the icon */
+    font-size: 0.95rem;
+    /* slightly smaller for FA icon */
+    flex: 0 0 auto;
+    box-shadow: inset 0 -2px 0 rgba(0, 0, 0, .06);
+}
+
+/* The icon inherits color from parent */
+.sticky-cta .cta-icon i {
+    line-height: 1;
+}
+
+.sticky-cta .cta-label {
+    display: inline-block;
+    line-height: 1;
+}
+
+.sticky-cta:hover {
+    transform: translateY(-2px) scale(1.03);
+    filter: brightness(1.04);
+    box-shadow:
+        0 16px 30px -10px rgba(184, 111, 0, .65),
+        0 6px 14px -4px rgba(11, 31, 75, .22);
+}
+
+.sticky-cta:active {
+    transform: scale(.97);
+}
+
+.sticky-cta:focus-visible {
+    outline: 3px solid var(--amber-t);
+    outline-offset: 3px;
+}
+
+/* responsive: keep it readable on phones */
+@media (max-width: 520px) {
+    .sticky-cta {
+        bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+        right: calc(1rem + env(safe-area-inset-right, 0px));
+        padding: 0.8rem 1.15rem 0.8rem 0.9rem;
+        font-size: 0.88rem;
+        gap: .45rem;
+    }
+
+    .sticky-cta .cta-icon {
+        width: 1.7rem;
+        height: 1.7rem;
+        font-size: .9rem;
+    }
+}
+
+/* respect reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+    .sticky-cta::before {
+        animation: none;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
 }
